@@ -15,6 +15,8 @@ environment:
 platform:
   replacements:
     'darwin_amd64': 'x86_64-apple-darwin'
+    'linux-amd64': 'x86_64-unknown-linux-gnu'
+    'windows-x86_64': 'x86_64-pc-windows-gnu'
 
 assemble:
   archive:
@@ -37,3 +39,7 @@ distributions:
     artifacts:
       - path: '{{artifactsDir}}/{{distributionName}}-{{projectVersion}}-x86_64-apple-darwin.zip'
         platform: 'darwin_amd64'
+      - path: '{{artifactsDir}}/{{distributionName}}-{{projectVersion}}-x86_64-unknown-linux-gnu.zip'
+        platform: 'linux-x86_64'
+      - path: '{{artifactsDir}}/{{distributionName}}-{{projectVersion}}-x86_64-pc-windows-gnu.zip'
+        platform: 'windows-x86_64'
