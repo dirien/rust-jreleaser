@@ -1,0 +1,39 @@
+project:
+  name: rust-jreleaser
+  version: 0.1.0
+  description: A very, very simple Hello World application written in Rust
+  longDescription: A very, very simple Hello World application
+  authors:
+    - Engin Diri
+  license: Apache-2.0
+  inceptionYear: 2022
+
+environment:
+  properties:
+    artifactsDir: out/jreleaser/assemble/rust-jreleaser/archive
+
+platform:
+  replacements:
+    'darwin_amd64': 'x86_64-apple-darwin'
+
+assemble:
+  archive:
+    rust-jreleaser:
+      active: ALWAYS
+      formats: [ ZIP ]
+      attachPlatform: true
+      fileSets:
+        - input: 'target/release'
+          output: 'bin'
+          includes: [ 'rust-jreleaser{.exe,}' ]
+        - input: '.'
+          includes: [ 'LICENSE' ]
+
+distributions:
+  rust-jreleaser:
+    type: BINARY
+    executable:
+      windowsExtension: exe
+    artifacts:
+      - path: '{{artifactsDir}}/{{distributionName}}-{{projectVersion}}-x86_64-apple-darwin.zip'
+        platform: 'darwin_amd64'
