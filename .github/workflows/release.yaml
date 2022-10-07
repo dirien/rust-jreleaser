@@ -39,3 +39,18 @@ jobs:
         env:
           JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Upload artifacts
+        uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8 # tag=v3.1.0
+        with:
+          name: artifacts
+          path: |
+            out/jreleaser/assemble/rust-jreleaser/archive/*.zip
+
+      - name: JReleaser output
+        if: always()
+        uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8 # tag=v3.1.0
+        with:
+          name: jreleaser-${{ matrix.os }}
+          path: |
+            out/jreleaser/trace.log
+            out/jreleaser/output.properties
