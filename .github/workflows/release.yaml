@@ -16,26 +16,26 @@ jobs:
       fail-fast: true
       matrix:
         os: [ ubuntu-latest, macOS-latest, windows-latest ]
-      runs-on: ${{ matrix.os }}
-      steps:
-        - name: Checkout
-          uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
-          with:
-            fetch-depth: 0
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
+        with:
+          fetch-depth: 0
 
-        - uses: actions-rs/toolchain@b2417cde72dcf67f306c0ae8e0828a81bf0b189f # tag=v1.0.7
-          with:
-            toolchain: stable
+      - uses: actions-rs/toolchain@b2417cde72dcf67f306c0ae8e0828a81bf0b189f # tag=v1.0.7
+        with:
+          toolchain: stable
 
-        - uses: actions-rs/cargo@ae10961054e4aa8b4aa7dffede299aaf087aa33b # tag=v1.0.3
-          with:
-            command: build
-            args: --release --all-features
+      - uses: actions-rs/cargo@ae10961054e4aa8b4aa7dffede299aaf087aa33b # tag=v1.0.3
+        with:
+          command: build
+          args: --release --all-features
 
-        - name: Assemble
-          uses: jreleaser/release-action@9d00b8a3e38acac18558faf7152ca24368ed0d9f # tag=v2.2.0
-          with:
-            arguments: assemble
-          env:
-            JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Assemble
+        uses: jreleaser/release-action@9d00b8a3e38acac18558faf7152ca24368ed0d9f # tag=v2.2.0
+        with:
+          arguments: assemble
+        env:
+          JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
