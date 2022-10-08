@@ -14,9 +14,9 @@ environment:
 
 platform:
   replacements:
-    'darwin_amd64': 'x86_64-apple-darwin'
-    'linux-amd64': 'x86_64-unknown-linux-gnu'
-    'windows-amd64': 'x86_64-pc-windows-gnu'
+    'osx-x86_64': 'darwin-amd64'
+    'linux-x86_64': 'linux-amd64'
+    'windows-x86_64': 'windows-amd64'
 
 assemble:
   archive:
@@ -37,12 +37,12 @@ distributions:
     executable:
       windowsExtension: exe
     artifacts:
-      - path: '{{artifactsDir}}/{{distributionName}}-{{projectVersion}}-x86_64-apple-darwin.zip'
-        platform: 'darwin_amd64'
-      - path: '{{artifactsDir}}/{{distributionName}}-{{projectVersion}}-x86_64-unknown-linux-gnu.zip'
-        platform: 'linux-amd64'
-      - path: '{{artifactsDir}}/{{distributionName}}-{{projectVersion}}-x86_64-pc-windows-gnu.zip'
-        platform: 'windows-amd64'
+      - path: '{{artifactsDir}}/{{distributionName}}-{{projectVersion}}-darwin-amd64.zip'
+        platform: 'osx-x86_64'
+      - path: '{{artifactsDir}}/{{distributionName}}-{{projectVersion}}-linux-amd64.zip'
+        platform: 'linux-x86_64'
+      - path: '{{artifactsDir}}/{{distributionName}}-{{projectVersion}}-windows-amd64.zip'
+        platform: 'windows-x86_64'
 
 packagers:
   brew:
@@ -50,7 +50,6 @@ packagers:
     commitAuthor:
       name: dirien
       email: engin.diri@mail.schwarz
-
     tap:
       owner: dirien
       name: homebrew-dirien-dev
