@@ -53,3 +53,11 @@ packagers:
     tap:
       owner: dirien
       name: homebrew-dirien-dev
+
+release:
+  github:
+    owner: dirien
+    name: rust-jreleaser
+    overwrite: true
+    update:
+      enabled: true
