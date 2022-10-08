@@ -198,7 +198,7 @@ The notable parts of the `build` job are, that we set the toolchain to `stable` 
         with:
           arguments: assemble
         env:
-          JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          JRELEASER_GITHUB_TOKEN: ${{ secrets.GH_PAT }}
 
       - name: Upload artifacts
         uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8 # tag=v3.1.0
@@ -219,8 +219,10 @@ The `release` job very simple, it will download the artifacts folder and uses th
         with:
           arguments: release -PartifactsDir=artifacts -PskipArchiveResolver
         env:
-          JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          JRELEASER_GITHUB_TOKEN: ${{ secrets.GH_PAT }}
 ```
+
+> As we going to write to a different repository, we need to create a personal access token with the `repo` scope and add it to the GitHub secrets. The name is `GH_PAT`.
 
 ## Release
 
