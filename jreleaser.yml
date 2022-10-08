@@ -43,3 +43,14 @@ distributions:
         platform: 'linux-amd64'
       - path: '{{artifactsDir}}/{{distributionName}}-{{projectVersion}}-x86_64-pc-windows-gnu.zip'
         platform: 'windows-amd64'
+
+packagers:
+  brew:
+    active: ALWAYS
+    commitAuthor:
+      name: dirien
+      email: engin.diri@mail.schwarz
+
+    tap:
+      owner: dirien
+      name: homebrew-dirien-dev
