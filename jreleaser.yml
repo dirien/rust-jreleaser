@@ -59,5 +59,4 @@ release:
     owner: dirien
     name: rust-jreleaser
     overwrite: true
-    update:
-      enabled: true
+    skipTag: true
