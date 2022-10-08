@@ -37,7 +37,7 @@ jobs:
         with:
           arguments: assemble
         env:
-          JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          JRELEASER_GITHUB_TOKEN: ${{ secrets.GH_PAT }}
 
       - name: Upload artifacts
         uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8 # tag=v3.1.0
@@ -73,7 +73,7 @@ jobs:
         with:
           arguments: release -PartifactsDir=artifacts -PskipArchiveResolver
         env:
-          JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          JRELEASER_GITHUB_TOKEN: ${{ secrets.GH_PAT }}
 
       - name: Upload JReleaser output
         if: always()
